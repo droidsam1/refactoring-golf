@@ -9,8 +9,7 @@ public class Payslip {
     }
 
     public double getNet() {
-        double taxDeductions = taxCalculator.getTaxDeductions(grossSalary);
-        return grossSalary - taxDeductions;
+        return grossSalary - taxCalculator.getTaxDeductions(grossSalary);
     }
 
     private double getTaxDeductions(double grossSalary1) {
