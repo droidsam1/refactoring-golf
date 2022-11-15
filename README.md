@@ -53,7 +53,7 @@ These are some example scores, achieved using IntelliJ.
 
 <table border="1">
 <tr><th>Hole</th><th>Best score</th><th>Notes</th></tr>
-<tr><td> 1    </td><td> 6          </td><td></td></tr>
+<tr><td> 1    </td><td> 5          </td><td></td></tr>
 <tr><td> 2    </td><td> 3          </td><td></td></tr>
 <tr><td> 3    </td><td> 9          </td><td></td></tr>
 <tr><td> 4    </td><td> 17         </td><td>lots of manual edits</td></tr> 
