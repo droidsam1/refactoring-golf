@@ -8,14 +8,14 @@ public class Payslip {
     }
 
     public double getNet() {
-        double taxDeductions = getTaxDeductions();
+        double taxDeductions = getTaxDeductions(grossSalary);
         return grossSalary - taxDeductions;
     }
 
-    private double getTaxDeductions() {
-        final double grossSalarySubjectToLowerTaxBracket = Math.max(Math.min(grossSalary, 20000.0) - 5000, 0.0);
-        final double grossSalarySubjectToMediumTaxBracket = Math.max(Math.min(grossSalary, 40000) - 20000, 0.0);
-        final double grossSalarySubjectToUpperTaxBracket = Math.max(grossSalary - 40000, 0.0);
+    private double getTaxDeductions(double grossSalary1) {
+        final double grossSalarySubjectToLowerTaxBracket = Math.max(Math.min(grossSalary1, 20000.0) - 5000, 0.0);
+        final double grossSalarySubjectToMediumTaxBracket = Math.max(Math.min(grossSalary1, 40000) - 20000, 0.0);
+        final double grossSalarySubjectToUpperTaxBracket = Math.max(grossSalary1 - 40000, 0.0);
         return grossSalarySubjectToLowerTaxBracket * 0.1 + grossSalarySubjectToMediumTaxBracket * 0.2 + grossSalarySubjectToUpperTaxBracket * 0.4;
     }
 }
