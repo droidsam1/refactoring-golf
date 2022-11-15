@@ -2,16 +2,16 @@ package payroll.hole02;
 
 
 public class Payslip {
-    private final double sal;
+    private final double grossSalary;
 
     public Payslip(final double grossSalary) {
-        this.sal = grossSalary;
+        this.grossSalary = grossSalary;
     }
 
     public double getNet() {
-        final double ltbg = Math.max(Math.min(sal, 20000.0) - 5000, 0.0);
-        final double mtbg = Math.max(Math.min(sal, 40000) - 20000, 0.0);
-        final double utbg = Math.max(sal - 40000, 0.0);
-        return sal - (ltbg * 0.1 + mtbg * 0.2 + utbg * 0.4);
+        final double ltbg = Math.max(Math.min(grossSalary, 20000.0) - 5000, 0.0);
+        final double mtbg = Math.max(Math.min(grossSalary, 40000) - 20000, 0.0);
+        final double utbg = Math.max(grossSalary - 40000, 0.0);
+        return grossSalary - (ltbg * 0.1 + mtbg * 0.2 + utbg * 0.4);
     }
 }
