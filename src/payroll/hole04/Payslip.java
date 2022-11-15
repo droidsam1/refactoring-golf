@@ -12,7 +12,4 @@ public class Payslip {
         return grossSalary - taxCalculator.getTaxDeductions(grossSalary);
     }
 
-    private double getTaxDeductions(double grossSalary1) {
-        return taxCalculator.getTaxDeductions(grossSalary1);
-    }
 }
