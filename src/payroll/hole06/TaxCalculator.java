@@ -15,10 +15,11 @@ public class TaxCalculator {
 
     public double taxFor(final double grossSalary) {
         int middleTaxBracketStart = 20000;
-        int lowerTaxBracketStart  = 5000;
-        final double lowerTaxBracketGross = grossToTaxInBand(grossToTaxInBandsBelowCurrent(grossSalary, middleTaxBracketStart), lowerTaxBracketStart );
-        final double middleTaxBracketGross = grossToTaxInBand(grossToTaxInBandsBelowCurrent(grossSalary, 40000), middleTaxBracketStart);
-        final double upperTaxBracketGross = grossToTaxInBand(grossSalary, 40000);
+        int lowerTaxBracketStart = 5000;
+        final double lowerTaxBracketGross = grossToTaxInBand(grossToTaxInBandsBelowCurrent(grossSalary, middleTaxBracketStart), lowerTaxBracketStart);
+        int upperTaxBracketStart = 40000;
+        final double middleTaxBracketGross = grossToTaxInBand(grossToTaxInBandsBelowCurrent(grossSalary, upperTaxBracketStart), middleTaxBracketStart);
+        final double upperTaxBracketGross = grossToTaxInBand(grossSalary, upperTaxBracketStart);
         return taxInBand(lowerTaxBracketGross, 0.1) + taxInBand(middleTaxBracketGross, 0.2) + taxInBand(upperTaxBracketGross, 0.4);
     }
 }
