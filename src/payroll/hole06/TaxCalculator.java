@@ -21,6 +21,7 @@ public class TaxCalculator {
         final double middleTaxBracketGross = grossToTaxInBand(grossToTaxInBandsBelowCurrent(grossSalary, upperTaxBracketStart), middleTaxBracketStart);
         final double upperTaxBracketGross = grossToTaxInBand(grossSalary, upperTaxBracketStart);
         double lowerTaxBracketRate  = 0.1;
-        return taxInBand(lowerTaxBracketGross, lowerTaxBracketRate ) + taxInBand(middleTaxBracketGross, 0.2) + taxInBand(upperTaxBracketGross, 0.4);
+        double middleTaxBracketRate  = 0.2;
+        return taxInBand(lowerTaxBracketGross, lowerTaxBracketRate ) + taxInBand(middleTaxBracketGross, middleTaxBracketRate ) + taxInBand(upperTaxBracketGross, 0.4);
     }
 }
