@@ -1,8 +1,8 @@
 package payroll.hole06;
 
 public class TaxCalculator {
-    private static double taxInBand(double lowerTaxBracketGross, double x) {
-        return lowerTaxBracketGross * x;
+    private static double taxInBand(double lowerTaxBracketGross, double lowerTaxBracketRate) {
+        return lowerTaxBracketGross * lowerTaxBracketRate;
     }
 
     private static double grossToTaxInBand(double grossSalary, int bracketMinimumGross) {
