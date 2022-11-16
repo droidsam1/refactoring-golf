@@ -1,35 +1,40 @@
 package payroll.hole05;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class PayslipTest {
     @Test
     public void taxIsZeroIfGrossIsBelowTaxFreeLimit() {
-        assertNetGivenGross(5000, 5000);
+        final Payslip payslip = new Payslip(5000, new TaxCalculator());
+        assertEquals(5000, payslip.getNet(), 1e-6);
     }
 
     @Test
     public void taxOnAmountInLowerTaxBracketExcludesTaxFreeLimit() {
-        assertNetGivenGross(10000, 9500);
-        assertNetGivenGross(20000, 18500);
+        final Payslip payslip = new Payslip(10000, new TaxCalculator());
+        assertEquals(9500, payslip.getNet(), 1e-6);
+
+        final Payslip payslip2 = new Payslip(20000, new TaxCalculator());
+        assertEquals(18500, payslip2.getNet(), 1e-6);
     }
 
     @Test
     public void taxOnAmountInMiddleTaxBracketIsSumOfLowerTaxBracketAmountAndAdditionalMiddleTaxBracketAmount() {
-        assertNetGivenGross(25000, 22500);
-        assertNetGivenGross(40000, 34500);
+        final Payslip payslip = new Payslip(25000, new TaxCalculator());
+        assertEquals(22500, payslip.getNet(), 1e-6);
+
+        final Payslip payslip2 = new Payslip(40000, new TaxCalculator());
+        assertEquals(34500, payslip2.getNet(), 1e-6);
     }
 
     @Test
     public void taxOnAmountInUpperTaxBracketIsSumOfLowerTaxBracketAmountAndMiddleTaxBracketAmountAndAdditionalUpperTaxBracketAmount() {
-        assertNetGivenGross(50000, 40500);
-        assertNetGivenGross(60000, 46500);
-    }
+        final Payslip payslip = new Payslip(50000, new TaxCalculator());
+        assertEquals(40500, payslip.getNet(), 1e-6);
 
-    private void assertNetGivenGross(final int gross, final int expectedNet) {
-        final Payslip payslip = new Payslip(gross, new TaxCalculator());
-        assertEquals(expectedNet, payslip.getNet(), 1e-6);
+        final Payslip payslip2 = new Payslip(60000, new TaxCalculator());
+        assertEquals(46500, payslip2.getNet(), 1e-6);
     }
 }
