@@ -9,8 +9,8 @@ public class TaxCalculator {
         return Math.max(grossSalary - bracketMinimumGross, 0.0);
     }
 
-    private static double grossToTaxInBandsBelowCurrent(double grossSalary, double b) {
-        return Math.min(grossSalary, b);
+    private static double grossToTaxInBandsBelowCurrent(double grossSalary, double bracketMinimumGross) {
+        return Math.min(grossSalary, bracketMinimumGross);
     }
 
     public double taxFor(final double grossSalary) {
