@@ -20,6 +20,7 @@ public class TaxCalculator {
         int upperTaxBracketStart = 40000;
         final double middleTaxBracketGross = grossToTaxInBand(grossToTaxInBandsBelowCurrent(grossSalary, upperTaxBracketStart), middleTaxBracketStart);
         final double upperTaxBracketGross = grossToTaxInBand(grossSalary, upperTaxBracketStart);
-        return taxInBand(lowerTaxBracketGross, 0.1) + taxInBand(middleTaxBracketGross, 0.2) + taxInBand(upperTaxBracketGross, 0.4);
+        double lowerTaxBracketRate  = 0.1;
+        return taxInBand(lowerTaxBracketGross, lowerTaxBracketRate ) + taxInBand(middleTaxBracketGross, 0.2) + taxInBand(upperTaxBracketGross, 0.4);
     }
 }
