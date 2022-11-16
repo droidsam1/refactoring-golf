@@ -5,8 +5,8 @@ public class TaxCalculator {
         return lowerTaxBracketGross * x;
     }
 
-    private static double grossToTaxInBand(double grossSalary, int x) {
-        return Math.max(grossSalary - x, 0.0);
+    private static double grossToTaxInBand(double grossSalary, int bracketMinimumGross) {
+        return Math.max(grossSalary - bracketMinimumGross, 0.0);
     }
 
     private static double grossToTaxInBandsBelowCurrent(double grossSalary, double b) {
@@ -14,15 +14,15 @@ public class TaxCalculator {
     }
 
     public double taxFor(final double grossSalary) {
-        int middleTaxBracketStart = 20000;
-        int lowerTaxBracketStart = 5000;
-        final double lowerTaxBracketGross = grossToTaxInBand(grossToTaxInBandsBelowCurrent(grossSalary, middleTaxBracketStart), lowerTaxBracketStart);
         int upperTaxBracketStart = 40000;
-        final double middleTaxBracketGross = grossToTaxInBand(grossToTaxInBandsBelowCurrent(grossSalary, upperTaxBracketStart), middleTaxBracketStart);
-        final double upperTaxBracketGross = grossToTaxInBand(grossSalary, upperTaxBracketStart);
-        double lowerTaxBracketRate = 0.1;
-        double middleTaxBracketRate = 0.2;
         double upperTaxBracketRate = 0.4;
+        final double upperTaxBracketGross = grossToTaxInBand(grossSalary, upperTaxBracketStart);
+        int middleTaxBracketStart = 20000;
+        double middleTaxBracketRate = 0.2;
+        final double middleTaxBracketGross = grossToTaxInBand(grossToTaxInBandsBelowCurrent(grossSalary, upperTaxBracketStart), middleTaxBracketStart);
+        int lowerTaxBracketStart = 5000;
+        double lowerTaxBracketRate = 0.1;
+        final double lowerTaxBracketGross = grossToTaxInBand(grossToTaxInBandsBelowCurrent(grossSalary, middleTaxBracketStart), lowerTaxBracketStart);
         return taxInBand(lowerTaxBracketGross, lowerTaxBracketRate) + taxInBand(middleTaxBracketGross, middleTaxBracketRate) + taxInBand(upperTaxBracketGross, upperTaxBracketRate);
     }
 }
