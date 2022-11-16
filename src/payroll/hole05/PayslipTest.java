@@ -15,9 +15,8 @@ public class PayslipTest {
 
     @Test
     public void taxIsZeroIfGrossIsBelowTaxFreeLimit() {
-        int grossSalary = 5000;
         int expectedNet = 5000;
-        assertNetGivenGross(grossSalary, expectedNet);
+        assertNetGivenGross(5000, expectedNet);
     }
 
     @Test
