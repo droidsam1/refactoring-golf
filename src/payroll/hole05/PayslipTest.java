@@ -10,7 +10,8 @@ public class PayslipTest {
 
     @Test
     public void taxIsZeroIfGrossIsBelowTaxFreeLimit() {
-        final Payslip payslip = new Payslip(5000, new TaxCalculator());
+        int grossSalary = 5000;
+        final Payslip payslip = new Payslip(grossSalary, new TaxCalculator());
         int expectedNet = 5000;
         assertEquals(expectedNet, payslip.getNet(), DELTA);
     }
