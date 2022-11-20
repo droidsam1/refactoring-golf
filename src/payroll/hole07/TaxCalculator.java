@@ -28,16 +28,16 @@ public class TaxCalculator {
             this.taxBracketRate = taxBracketRate;
         }
 
-        private static double taxInBand(double lowerTaxBracketGross, double lowerTaxBracketRate) {
-            return lowerTaxBracketGross * lowerTaxBracketRate;
+        private static double taxInBand(double lowerTaxBracketGross, double taxBracketRate) {
+            return lowerTaxBracketGross * taxBracketRate;
         }
 
         private static double grossToTaxInBand(double grossSalary, double bracketMinimumGross) {
             return Math.max(grossSalary - bracketMinimumGross, 0.0);
         }
 
-        private static double grossToTaxInBandsBelowCurrent(double grossSalary, double bracketMinimumGross) {
-            return Math.min(grossSalary, bracketMinimumGross);
+        private static double grossToTaxInBandsBelowCurrent(double grossSalary, double taxBracketStart) {
+            return Math.min(grossSalary, taxBracketStart);
         }
     }
 }
