@@ -16,6 +16,10 @@ public class TaxCalculator {
     }
 
     public static class TaxBand {
+
+        public TaxBand() {
+        }
+
         private static double taxInBand(double lowerTaxBracketGross, double lowerTaxBracketRate) {
             return lowerTaxBracketGross * lowerTaxBracketRate;
         }
