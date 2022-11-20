@@ -13,7 +13,8 @@ public class TaxCalculator {
         final double middleTaxBracketGross = middleTaxBand.grossToTaxInBand(TaxBand.grossToTaxInBandsBelowCurrent(grossSalary, upperTaxBracketStart), middleTaxBracketStart);
         int lowerTaxBracketStart = 5000;
         double lowerTaxBracketRate = 0.1;
-        final double lowerTaxBracketGross =  new TaxBand(lowerTaxBracketStart, lowerTaxBracketRate).grossToTaxInBand(TaxBand.grossToTaxInBandsBelowCurrent(grossSalary, middleTaxBracketStart), lowerTaxBracketStart);
+        TaxBand lowerTaxBand = new TaxBand(lowerTaxBracketStart, lowerTaxBracketRate);
+        final double lowerTaxBracketGross =  lowerTaxBand.grossToTaxInBand(TaxBand.grossToTaxInBandsBelowCurrent(grossSalary, middleTaxBracketStart), lowerTaxBracketStart);
         return TaxBand.taxInBand(lowerTaxBracketGross, lowerTaxBracketRate) + TaxBand.taxInBand(middleTaxBracketGross, middleTaxBracketRate) + TaxBand.taxInBand(upperTaxBracketGross, upperTaxBracketRate);
     }
 
