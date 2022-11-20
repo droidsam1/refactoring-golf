@@ -26,8 +26,8 @@ public class TaxCalculator {
             return lowerTaxBracketGross * taxBracketRate;
         }
 
-        private double grossToTaxInBand(double grossSalary) {
-            return Math.max(grossSalary - taxBracketStart, 0.0);
+        private double grossToTaxInBand(double grossSalaryExcludingPartAlreadyTaxedAtHigherRate) {
+            return Math.max(grossSalaryExcludingPartAlreadyTaxedAtHigherRate - taxBracketStart, 0.0);
         }
 
         private double grossToTaxInBandsBelowCurrent(double grossSalary) {
