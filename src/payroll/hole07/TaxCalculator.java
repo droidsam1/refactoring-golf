@@ -3,9 +3,7 @@ package payroll.hole07;
 public class TaxCalculator {
 
     public double taxFor(final double grossSalary) {
-        int upperTaxBracketStart = 40000;
-        double upperTaxBracketRate = 0.4;
-        TaxBand upperTaxBand = new TaxBand(upperTaxBracketStart, upperTaxBracketRate);
+        TaxBand upperTaxBand = new TaxBand(40000, 0.4);
         final double upperTaxBracketGross = upperTaxBand.grossToTaxInBand(grossSalary);
         int middleTaxBracketStart = 20000;
         double middleTaxBracketRate = 0.2;
