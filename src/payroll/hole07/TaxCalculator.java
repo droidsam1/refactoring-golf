@@ -17,7 +17,12 @@ public class TaxCalculator {
 
     public static class TaxBand {
 
-        public TaxBand() {
+        private final int taxBracketStart;
+        private final double taxBracketRate;
+
+        public TaxBand(int taxBracketStart, double taxBracketRate) {
+            this.taxBracketStart = taxBracketStart;
+            this.taxBracketRate = taxBracketRate;
         }
 
         private static double taxInBand(double lowerTaxBracketGross, double lowerTaxBracketRate) {
