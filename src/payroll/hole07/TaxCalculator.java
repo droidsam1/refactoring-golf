@@ -15,7 +15,7 @@ public class TaxCalculator {
         double lowerTaxBracketRate = 0.1;
         TaxBand lowerTaxBand = new TaxBand(lowerTaxBracketStart, lowerTaxBracketRate);
         final double lowerTaxBracketGross = lowerTaxBand.grossToTaxInBand(middleTaxBand.grossToTaxInBandsBelowCurrent(grossSalary, middleTaxBracketStart), lowerTaxBracketStart);
-        return lowerTaxBand.taxInBand(lowerTaxBracketGross, lowerTaxBracketRate) + middleTaxBand.taxInBand(middleTaxBracketGross, middleTaxBracketRate) + upperTaxBand.taxInBand(upperTaxBracketGross, upperTaxBracketRate);
+        return lowerTaxBand.taxInBand(lowerTaxBracketGross) + middleTaxBand.taxInBand(middleTaxBracketGross) + upperTaxBand.taxInBand(upperTaxBracketGross);
     }
 
     public class TaxBand {
@@ -28,7 +28,7 @@ public class TaxCalculator {
             this.taxBracketRate = taxBracketRate;
         }
 
-        private double taxInBand(double lowerTaxBracketGross, double taxBracketRate) {
+        private double taxInBand(double lowerTaxBracketGross) {
             return lowerTaxBracketGross * taxBracketRate;
         }
 
