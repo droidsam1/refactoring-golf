@@ -5,9 +5,7 @@ public class TaxCalculator {
     public double taxFor(final double grossSalary) {
         TaxBand upperTaxBand = new TaxBand(40000, 0.4);
         final double upperTaxBracketGross = upperTaxBand.grossToTaxInBand(grossSalary);
-        int middleTaxBracketStart = 20000;
-        double middleTaxBracketRate = 0.2;
-        TaxBand middleTaxBand = new TaxBand(middleTaxBracketStart, middleTaxBracketRate);
+        TaxBand middleTaxBand = new TaxBand(20000, 0.2);
         final double middleTaxBracketGross = middleTaxBand.grossToTaxInBand(upperTaxBand.grossToTaxInBandsBelowCurrent(grossSalary));
         int lowerTaxBracketStart = 5000;
         double lowerTaxBracketRate = 0.1;
